@@ -111,7 +111,7 @@ public class LibraryPR3PlusTest  {
         theLibrary.addReview("ISBN_X", "A", 5, "blah blah blah");
         theLibrary.addReview("ISBN_Y", "A", 5, "blah blah blah");
 
-        Edge<Integer, Book> edge =  theLibrary.getEdge("ISBN_X", "ISBN_Y");
+        Edge<Integer, Copy> edge =  theLibrary.getEdge("ISBN_X", "ISBN_Y");
         Assert.assertEquals(Integer.valueOf(1), edge.getLabel());
 
         theLibrary.addReview("ISBN_X", "B", 5, "blah blah blah");
@@ -148,16 +148,16 @@ public class LibraryPR3PlusTest  {
                 this.theLibrary.getRecommendationsByBook("ISBN_X"));
 
         addReviews();
-        Iterator<Book> it = this.theLibrary.getRecommendationsByBook("ISBN_X");
+        Iterator<Copy> it = this.theLibrary.getRecommendationsByBook("ISBN_X");
         Assert.assertTrue(it.hasNext());
-        Book b = it.next();
+        Copy b = it.next();
         Assert.assertEquals("ISBN_Y", b.getIsbn());
-        Edge<Integer, Book> edge1 =  theLibrary.getEdge("ISBN_X", "ISBN_Y");
+        Edge<Integer, Copy> edge1 =  theLibrary.getEdge("ISBN_X", "ISBN_Y");
         Assert.assertEquals(Integer.valueOf(2), edge1.getLabel());
 
         b = it.next();
         Assert.assertEquals("ISBN_Z", b.getIsbn());
-        Edge<Integer, Book> edge2 =  theLibrary.getEdge("ISBN_X", "ISBN_Z");
+        Edge<Integer, Copy> edge2 =  theLibrary.getEdge("ISBN_X", "ISBN_Z");
         Assert.assertEquals(Integer.valueOf(1), edge2.getLabel());
 
 
@@ -171,9 +171,9 @@ public class LibraryPR3PlusTest  {
                 this.theLibrary.getRecommendationsByReader("XXX"));
 
         addReviews();
-        Iterator<Book> it = this.theLibrary.getRecommendationsByReader("A");
+        Iterator<Copy> it = this.theLibrary.getRecommendationsByReader("A");
         Assert.assertTrue(it.hasNext());
-        Book b = it.next();
+        Copy b = it.next();
         Assert.assertEquals("ISBN_Z", b.getIsbn());
 
         Assert.assertFalse(it.hasNext());

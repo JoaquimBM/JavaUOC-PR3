@@ -731,8 +731,8 @@ public class LibraryPR2Test {
 
         giveBackBookTest();
 
-        Book book = theLibrary.getMostReadBook();
-        Assert.assertEquals("978-0451530960", book.getIsbn());
+        Copy copy = theLibrary.getMostReadBook();
+        Assert.assertEquals("978-0451530960", copy.getIsbn());
 
     }
 

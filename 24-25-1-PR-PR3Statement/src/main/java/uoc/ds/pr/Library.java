@@ -69,7 +69,7 @@ public interface Library {
 
     public Reader getReaderTheMost() throws NoReaderException;
 
-    public Book getMostReadBook() throws NoBookException;
+    public Copy getMostReadBook() throws NoBookException;
 
     /***********************************************************************************/
     /******************** AUX OPERATIONS  **********************************************/

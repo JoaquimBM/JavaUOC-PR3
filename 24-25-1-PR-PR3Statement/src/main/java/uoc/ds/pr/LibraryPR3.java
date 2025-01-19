@@ -40,18 +40,18 @@ public interface LibraryPR3 extends Library {
             throws ReaderNotFoundException, CopyNotFoundException,
             ReaderAlreadyHasRequest4Copy, ReaderAlreadyHasLoan4Copy;
 
-    public Iterator<Book> getBooksByTheme(String themeId) throws NoBookException;
-    public Iterator<Book> getBooksByAuthor(String uniqueCode) throws NoBookException;
+    public Iterator<Book> getBooksByTheme(String themeId) throws NoBookException; // This and the function bellow changed from Copy->Book because it makes more sense even the function is Books// probably a typo in the big ADT picture this make more sense
+    public Iterator<Book> getBooksByAuthor(String uniqueCode) throws NoBookException;// Also in a application perspective this makes more sense
     public Level getReaderLevel(String readerId) throws ReaderNotFoundException;
     public void addReview(String bookId, String readerId, int rate, String comment)
             throws RateOutOfRangeException, ReaderNotFoundException, BookNotFoundException, ReaderNotAssociatedWithBookException, UserAlreadyRatedBookException;
     public Iterator<Copy> getDestroyedCopies() throws NoBookException;
-    public Iterator<Rating> getReviewsByBook(String bookId) throws BookNotFoundException, NoReviewsException;
-    public Iterator<CatalogedBook> best5Books() throws NoBookException;
+    public Iterator<Ratings> getReviewsByBook(String bookId) throws BookNotFoundException, NoReviewsException;
+    public Iterator<Book> best5Books() throws NoBookException;
     public Iterator<Reader> best5Readers() throws NoReaderException;
 
-    public Iterator<Book> getRecommendationsByBook(String bookId) throws NoBookException;
-    public Iterator<Book> getRecommendationsByReader(String readerId) throws ReaderNotFoundException, NoBookException;
+    public Iterator<Copy> getRecommendationsByBook(String bookId) throws NoBookException;
+    public Iterator<Copy> getRecommendationsByReader(String readerId) throws ReaderNotFoundException, NoBookException;
     public Iterator<Author> getRecommendedAuthors(String uniqueCode) throws AuthorNotFoundException, NoAuthorException;
 
     /***********************************************************************************/
@@ -64,6 +64,6 @@ public interface LibraryPR3 extends Library {
     public int numAuthors();
     public  Author getAuthor(String id);
 
-    public Edge<Integer, Book> getEdge(String bookId1, String bookId2);
+    public Edge<Integer, Copy> getEdge(String bookId1, String bookId2);
 
 }

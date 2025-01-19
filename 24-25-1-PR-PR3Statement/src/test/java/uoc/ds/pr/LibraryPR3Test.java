@@ -4,14 +4,8 @@ import edu.uoc.ds.traversal.Iterator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uoc.ds.pr.data.BooksMetaData;
 import uoc.ds.pr.exceptions.*;
 import uoc.ds.pr.model.*;
-import uoc.ds.pr.util.DateUtils;
-
-
-import static uoc.ds.pr.data.BooksMetaData.addAuthorData;
-import static uoc.ds.pr.data.BooksMetaData.addThemeData;
 
 public class LibraryPR3Test extends LibraryPR2Test {
 
@@ -49,47 +43,47 @@ public class LibraryPR3Test extends LibraryPR2Test {
         Assert.assertThrows(NoBookException.class, () ->
                 theLibrary.getBooksByTheme("THEME10"));
 
-        Iterator<Book> it = theLibrary.getBooksByTheme("THEME21");
+        Iterator<Copy> it = theLibrary.getBooksByTheme("THEME21");
 
         Assert.assertTrue(it.hasNext());
-        Book book1 = it.next();
-        Assert.assertEquals("978-0140433340", book1.getIsbn());
-        Assert.assertEquals("Love and Friendship", book1.getTitle());
+        Copy copy1 = it.next();
+        Assert.assertEquals("978-0140433340", copy1.getIsbn());
+        Assert.assertEquals("Love and Friendship", copy1.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book2 = it.next();
-        Assert.assertEquals("978-0141439518", book2.getIsbn());
-        Assert.assertEquals("Pride and Prejudice", book2.getTitle());
+        Copy copy2 = it.next();
+        Assert.assertEquals("978-0141439518", copy2.getIsbn());
+        Assert.assertEquals("Pride and Prejudice", copy2.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book3 = it.next();
-        Assert.assertEquals("978-0141439587", book3.getIsbn());
-        Assert.assertEquals("Emma", book3.getTitle());
+        Copy copy3 = it.next();
+        Assert.assertEquals("978-0141439587", copy3.getIsbn());
+        Assert.assertEquals("Emma", copy3.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book4 = it.next();
-        Assert.assertEquals("978-0141439686", book4.getIsbn());
-        Assert.assertEquals("Persuasion", book4.getTitle());
+        Copy copy4 = it.next();
+        Assert.assertEquals("978-0141439686", copy4.getIsbn());
+        Assert.assertEquals("Persuasion", copy4.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book5 = it.next();
-        Assert.assertEquals("978-0141439808", book5.getIsbn());
-        Assert.assertEquals("Mansfield Park", book5.getTitle());
+        Copy copy5 = it.next();
+        Assert.assertEquals("978-0141439808", copy5.getIsbn());
+        Assert.assertEquals("Mansfield Park", copy5.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book6 = it.next();
-        Assert.assertEquals("978-0743477116", book6.getIsbn());
-        Assert.assertEquals("Romeo and Juliet", book6.getTitle());
+        Copy copy6 = it.next();
+        Assert.assertEquals("978-0743477116", copy6.getIsbn());
+        Assert.assertEquals("Romeo and Juliet", copy6.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book7 = it.next();
-        Assert.assertEquals("978-0743477543", book7.getIsbn());
-        Assert.assertEquals("A Midsummer Night's Dream", book7.getTitle());
+        Copy copy7 = it.next();
+        Assert.assertEquals("978-0743477543", copy7.getIsbn());
+        Assert.assertEquals("A Midsummer Night's Dream", copy7.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book8 = it.next();
-        Assert.assertEquals("978-0743482752", book8.getIsbn());
-        Assert.assertEquals("Much Ado About Nothing", book8.getTitle());
+        Copy copy8 = it.next();
+        Assert.assertEquals("978-0743482752", copy8.getIsbn());
+        Assert.assertEquals("Much Ado About Nothing", copy8.getTitle());
 
         Assert.assertFalse(it.hasNext());
 
@@ -105,52 +99,52 @@ public class LibraryPR3Test extends LibraryPR2Test {
 
 
 
-        Iterator<Book> it = theLibrary.getBooksByAuthor("JA");
+        Iterator<Copy> it = theLibrary.getBooksByAuthor("JA");
 
         Assert.assertTrue(it.hasNext());
-        Book book1 = it.next();
-        Assert.assertEquals("978-0141439518", book1.getIsbn());
-        Assert.assertEquals("Pride and Prejudice", book1.getTitle());
+        Copy copy1 = it.next();
+        Assert.assertEquals("978-0141439518", copy1.getIsbn());
+        Assert.assertEquals("Pride and Prejudice", copy1.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book2 = it.next();
-        Assert.assertEquals("978-0141439662", book2.getIsbn());
-        Assert.assertEquals("Sense and Sensibility", book2.getTitle());
+        Copy copy2 = it.next();
+        Assert.assertEquals("978-0141439662", copy2.getIsbn());
+        Assert.assertEquals("Sense and Sensibility", copy2.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book3 = it.next();
-        Assert.assertEquals("978-0141439587", book3.getIsbn());
-        Assert.assertEquals("Emma", book3.getTitle());
+        Copy copy3 = it.next();
+        Assert.assertEquals("978-0141439587", copy3.getIsbn());
+        Assert.assertEquals("Emma", copy3.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book4 = it.next();
-        Assert.assertEquals("978-0141439808", book4.getIsbn());
-        Assert.assertEquals("Mansfield Park", book4.getTitle());
+        Copy copy4 = it.next();
+        Assert.assertEquals("978-0141439808", copy4.getIsbn());
+        Assert.assertEquals("Mansfield Park", copy4.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book5 = it.next();
-        Assert.assertEquals("978-0141439686", book5.getIsbn());
-        Assert.assertEquals("Persuasion", book5.getTitle());
+        Copy copy5 = it.next();
+        Assert.assertEquals("978-0141439686", copy5.getIsbn());
+        Assert.assertEquals("Persuasion", copy5.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book6 = it.next();
-        Assert.assertEquals("978-0141439792", book6.getIsbn());
-        Assert.assertEquals("Northanger Abbey", book6.getTitle());
+        Copy copy6 = it.next();
+        Assert.assertEquals("978-0141439792", copy6.getIsbn());
+        Assert.assertEquals("Northanger Abbey", copy6.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book7 = it.next();
-        Assert.assertEquals("978-0140433203", book7.getIsbn());
-        Assert.assertEquals("Lady Susan", book7.getTitle());
+        Copy copy7 = it.next();
+        Assert.assertEquals("978-0140433203", copy7.getIsbn());
+        Assert.assertEquals("Lady Susan", copy7.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book8 = it.next();
-        Assert.assertEquals("N/A", book8.getIsbn());
-        Assert.assertEquals("The Watsons", book8.getTitle());
+        Copy copy8 = it.next();
+        Assert.assertEquals("N/A", copy8.getIsbn());
+        Assert.assertEquals("The Watsons", copy8.getTitle());
 
         Assert.assertTrue(it.hasNext());
-        Book book9 = it.next();
-        Assert.assertEquals("978-0140433340", book9.getIsbn());
-        Assert.assertEquals("Love and Friendship", book9.getTitle());
+        Copy copy9 = it.next();
+        Assert.assertEquals("978-0140433340", copy9.getIsbn());
+        Assert.assertEquals("Love and Friendship", copy9.getTitle());
 
         Assert.assertFalse(it.hasNext());
     }
@@ -215,9 +209,9 @@ public class LibraryPR3Test extends LibraryPR2Test {
         Assert.assertThrows(NoReviewsException.class, () ->
                 theLibrary.getReviewsByBook("978-1435149408"));
 
-        Iterator<Rating> it = theLibrary.getReviewsByBook("978-1605062234");
+        Iterator<Ratings> it = theLibrary.getReviewsByBook("978-1605062234");
         Assert.assertTrue(it.hasNext());
-        Rating rating = it.next();
+        Ratings rating = it.next();
         Assert.assertEquals(5, rating.getRate());
         Assert.assertEquals("blah blah blah", rating.getComment());
         Assert.assertEquals("readerId2", rating.getReader().getId());
@@ -233,10 +227,10 @@ public class LibraryPR3Test extends LibraryPR2Test {
 
         addReviewTest();
 
-        Iterator<CatalogedBook> it = theLibrary.best5Books();
+        Iterator<CatalogedCopy> it = theLibrary.best5Books();
         Assert.assertTrue(it.hasNext());
-        CatalogedBook catalogedBook = it.next();
-        Assert.assertEquals("978-1605062234", catalogedBook.getIsbn());
+        CatalogedCopy catalogedCopies = it.next();
+        Assert.assertEquals("978-1605062234", catalogedCopies.getIsbn());
         Assert.assertFalse(it.hasNext());
     }
 

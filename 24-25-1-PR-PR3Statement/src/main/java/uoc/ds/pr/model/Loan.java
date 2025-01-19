@@ -10,7 +10,7 @@ public class Loan {
 
     private String loanId;
     private Library.LoanState state;
-    private CatalogedBook catalogedBook;
+    private CatalogedCopy catalogedCopies;
     private LocalDate date;
     private LocalDate expirationDate;
     private Reader reader;
@@ -19,10 +19,10 @@ public class Loan {
     public Loan(String loanId) {
         this.loanId = loanId;
     }
-    public Loan(String loanId, CatalogedBook catalogedBook, LocalDate date, LocalDate expirationDate) {
+    public Loan(String loanId, CatalogedCopy catalogedCopies, LocalDate date, LocalDate expirationDate) {
         this(loanId);
         this.state = Library.LoanState.INPROGRESS;
-        this.catalogedBook = catalogedBook;
+        this.catalogedCopies = catalogedCopies;
         this.date = date;
         this.expirationDate = expirationDate;
     }
@@ -64,10 +64,10 @@ public class Loan {
     }
 
     public String getTitle() {
-        return catalogedBook.getTitle();
+        return catalogedCopies.getTitle();
     }
 
     public String getBookId() {
-        return catalogedBook.getBookId();
+        return catalogedCopies.getBookId();
     }
 }

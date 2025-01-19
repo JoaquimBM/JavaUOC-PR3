@@ -3,8 +3,6 @@ package uoc.ds.pr.model;
 import edu.uoc.ds.adt.sequential.Set;
 import edu.uoc.ds.adt.sequential.SetLinkedListImpl;
 import edu.uoc.ds.traversal.Iterator;
-import edu.uoc.ds.traversal.IteratorArrayImpl;
-import edu.uoc.ds.traversal.MultipleIterator;
 import uoc.ds.pr.Library;
 import uoc.ds.pr.util.DSLinkedList;
 
@@ -16,6 +14,7 @@ import static uoc.ds.pr.Library.MAXIMUM_NUMBER_OF_BOOKS;
 public class Reader implements Comparable<Reader> {
     public static final Comparator<Reader> CMP = (r1, r2) -> r1.getId().compareTo(r2.getId());
     public static final Comparator<Reader> CMP_V = (r1, r2)->Double.compare(r1.numAllLoans(), r2.numAllLoans());
+    public static final Comparator<Reader> CMP_SCORE = (cb1, cb2) -> Integer.compare(cb1.readerScore, cb2.readerScore);
 
 
     private String id;
@@ -28,7 +27,12 @@ public class Reader implements Comparable<Reader> {
 
     private DSLinkedList<Loan> closedLoans;
     private Loan[] currentLoans;
+    private DSLinkedList<Ratings> ratings;
+
     private int numberCurrentLoans;
+
+    private int readerScore;
+
     public Reader(String id, String name, String surname, String docId,
                   LocalDate birthDate, String birthPlace, String address) {
         setId(id);
@@ -36,6 +40,7 @@ public class Reader implements Comparable<Reader> {
         closedLoans = new DSLinkedList<>(Loan.CMP);
         currentLoans = new Loan[MAXIMUM_NUMBER_OF_BOOKS];
         numberCurrentLoans = 0;
+        ratings = new DSLinkedList<>(Ratings.CMP);
     }
 
 
@@ -112,8 +117,8 @@ public class Reader implements Comparable<Reader> {
         return (numberCurrentLoans == MAXIMUM_NUMBER_OF_BOOKS);
     }
 
-    public Loan addNewLoan(String loanId, CatalogedBook catalogedBook, LocalDate date, LocalDate expirationDate) {
-        Loan loan = new Loan(loanId, catalogedBook, date, expirationDate);
+    public Loan addNewLoan(String loanId, CatalogedCopy catalogedCopies, LocalDate date, LocalDate expirationDate) {
+        Loan loan = new Loan(loanId, catalogedCopies, date, expirationDate);
         currentLoans[numberCurrentLoans++] = loan;
         return loan;
     }
@@ -186,6 +191,9 @@ public class Reader implements Comparable<Reader> {
             }
         }
         return loanSet.values();
+    }
+    public int getReaderScore(){
+        return readerScore;
     }
 
     @Override

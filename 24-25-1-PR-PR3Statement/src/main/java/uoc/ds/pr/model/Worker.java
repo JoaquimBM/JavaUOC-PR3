@@ -9,14 +9,14 @@ public class Worker {
 
     private int totalCatalogBooks;
 
-    private DSLinkedList<CatalogedBook> catalogedBooks;
+    private DSLinkedList<CatalogedCopy> catalogedBooks;
     private DSLinkedList<Loan> loanList;
     private DSLinkedList<Loan> closedLoanList;
 
     public Worker(String id, String name, String surname) {
         setId(id);
         update(name, surname);
-        catalogedBooks = new DSLinkedList(CatalogedBook.CMP);
+        catalogedBooks = new DSLinkedList(CatalogedCopy.CMP);
         loanList = new DSLinkedList<>(Loan.CMP);
         closedLoanList = new DSLinkedList<>(Loan.CMP);
     }
@@ -50,9 +50,9 @@ public class Worker {
         setSurname(surname);
     }
 
-    public void catalogBook(CatalogedBook catalogedBook) {
+    public void catalogBook(CatalogedCopy catalogedCopies) {
         incTotalCatalogBooks();
-        catalogedBooks.insertEnd(catalogedBook);
+        catalogedBooks.insertEnd(catalogedCopies);
     }
 
     public int numCatalogBooks() {
